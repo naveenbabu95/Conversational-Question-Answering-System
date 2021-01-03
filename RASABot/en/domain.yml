@@ -1,0 +1,165 @@
+intents:
+  - chitchat:
+      use_entities: []
+  - affirm
+  - deny
+  - stop
+  - thankyou
+  - greet
+  - bot_challenge
+  - get_location_state
+  - inputting_name
+  - restart
+  - change_exam_type
+  - get_location_city
+
+  - get_course_info
+  - get_degree
+  - ask_fee_for_course
+  - ask_fee_for_exam
+  - ask_syllabus_of_exam
+  - get_branch
+
+  - need_more_info
+  - find_an_exam_center
+  - get_exam_type
+  - get_branches_in_a_campus
+  - get_campus
+  - ask_which_campus_has_branch
+
+entities:
+  - location_state
+  - exam_type
+  - language
+  - name_of_user
+  - location_city
+  - list_of_cities
+  - course
+  - branch
+  - campus
+
+slots:
+  location_state:
+    type: unfeaturized
+  exam_type:
+    type: unfeaturized
+  language:
+    type: categorical
+    values:
+      - en
+  name_of_user:
+    type: unfeaturized
+    initial_value: "Applicant"
+  location_city:
+    type: unfeaturized
+  list_of_cities:
+    type: unfeaturized
+    initial_value: []
+  course:
+    type: unfeaturized
+  branch:
+    type: unfeaturized
+  campus:
+    type: unfeaturized
+
+
+forms:
+- bits_enterance_examcenter_search_in_state
+
+session_config:
+  session_expiration_time: 60  # value in minutes
+  carry_over_slots_to_new_session: false
+
+actions:
+  - action_search_exam_centers
+  - action_get_info_about_exam
+  - action_chat_restart
+  - action_get_addr_exam_center
+
+  - action_fetch_course_info
+  - action_fetch_syllabus_for_exam
+  - action_fetch_fee_for_exam
+  - action_fetch_fee_for_course
+  - action_fetch_branches_in_campus
+  - action_fetch_campus_from_branch
+responses:
+  utter_greet_ask_name:
+  - text: "Hello. I am a BITS FAQs bot. I can help you solve your queries about the enterance exams to BITS Pilani. 
+            What is your name?"
+  - text: "Hi. My name is BITS bot. What is your name?"
+
+  utter_help_find_centers:
+  - text: "To help you find your exam centers, I would need your exam type(BITSAT or BITSHD) and the state you are from"
+  utter_how_can_i_help:
+  - text: "Hi {name_of_user}, I am here to solve your queries regarding the BITS entrance exams"
+  - text: "Hello {name_of_user}, How can I help you today?"
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+  utter_restart:
+    - text: "restarted"
+  utter_default:
+    - text: "sorry, I didn't understand you, please try input something else"
+  utter_ask_location_state:
+  - text: "Can you provide your location please? Please enter the state you are in"
+  - text: "To find the nearest {exam_type} center I need the state you are from."
+  utter_ask_exam_type:
+  - text:  Please specify the exam you are giving. Which exam are u taking, BITSAT OR BITSHD?
+  utter_submit:
+    - text: "All done!"
+  utter_noworries:
+    - text: "It was nice talking to you {name_of_user}, hope I could be of some help."
+  utter_chitchat:
+    - text: "chitchat"
+  utter_ask_continue:
+    - text: "{name_of_user} do you want to continue?"
+  utter_slots_values:
+    - text: "I am going to find a center for {exam_type} in {location_state}"
+  utter_look_for_centers:
+    - text: "We will be looking for exam centeres in your state."
+  utter_ask_need_exam_center:
+    - text: "Do you want to find an exam center near you?"
+    - text: "Are you looking for an exam center?"
+    - text: "Do you want to locate an exam center near you?"
+  utter_ask_get_info_abt_exam:
+    - text: "Do you want to know more about {exam_type} exam?"
+    - text: "You want to learn more about the exam?"
+
+  utter_sure:
+     - text: "Sure. I'll do that"
+  utter_wrong_location_state:
+    - text: "{location_state} is not a state in India. Please enter a valid state"
+  utter_can_help_you_find_examcenter_in_city:
+    - text: "I can help you find an a exam center in the above cities"
+    - text: "Do you need an address of an exam center in one of these cities"
+  utter_get_city:
+    - text: "Please enter the city you want to seacrh an exam center"
+  utter_wrong_location_city:
+    - text: "Sorry, we do not conduct {exam_type} exam in this city"
+  utter_could_not_find_exam_center:
+    - text: "We could not find an exam center, please try later"
+  utter_found_exam_center:
+    - text: "We found centers in {centers}"
+
+
+  utter_ask_degree:
+    - text: "Are you intrested in undergrad or postgrad"
+    - text: "B.E. or M.E.?"
+  utter_which_branch_of_exam:
+    - text: "Which branch are you intrested in"
+  utter_fee_for_exam:
+    - text : "Fees for {exam_type} exam is {feeInRupee}"
+  utter_fee_for_program:
+    - text : "Fees for {course} is {feeInRupee}"
+  utter_error_occurred:
+    - text : "An error occurred"
+  utter_syllabus:
+    - text : "Syllabus for {exam_type} is {Syllabus}"
+  utter_ask_branch:
+    - text : "Which branch are you from?"
+    - text : "Which paper of BITSHD are you appearing for?"
+  utter_branches_available_in_campus:
+    - text: "The branches available for {course} in {campus} campus are {branches}"
+  utter_ask_campus:
+    - text: "Which campus? we have our campuses in Pilani, Goa and Hyderabad"
+  utter_specific_branch_available_in_campus:
+    - text: "The branch {branch} is/are available in {campus} campus"

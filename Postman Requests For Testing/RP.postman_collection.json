@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "fc3ea7a6-0cee-4abd-908a-faa664f2cf5a",
+		"name": "RP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "examinfo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "exam_type",
+							"value": "BITSAT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/bitsbot/get_info_about_exam/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"bitsbot",
+						"get_info_about_exam",
+						""
+					],
+					"query": [
+						{
+							"key": "exam_type",
+							"value": "BITSAT",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findcenters",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "exam_type",
+							"value": "BITSHD",
+							"type": "text"
+						},
+						{
+							"key": "location_state",
+							"value": "Maharashtra",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/bitsbot/find_centers/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"bitsbot",
+						"find_centers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_course_info",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "course",
+							"value": "BE",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/bitsbot/fetch_course_info/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"bitsbot",
+						"fetch_course_info",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_syllabus_for_exam",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "exam_type",
+							"value": "BITSHD",
+							"type": "text"
+						},
+						{
+							"key": "branch",
+							"value": "Computer Engineering",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/bitsbot/fetch_syllabus_for_exam/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"bitsbot",
+						"fetch_syllabus_for_exam",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_fee_for_exam",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "exam_type",
+							"value": "BITSAT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/bitsbot/fetch_fee_for_exam/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"bitsbot",
+						"fetch_fee_for_exam",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_fee_for_course",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "course",
+							"value": "BE",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/bitsbot/fetch_fee_for_course/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"bitsbot",
+						"fetch_fee_for_course",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_address_of_exam_center",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "exam_type",
+							"value": "BITSAT",
+							"type": "text"
+						},
+						{
+							"key": "location_state",
+							"value": "Maharashtra",
+							"type": "text"
+						},
+						{
+							"key": "location_city",
+							"value": "Mumbai",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/bitsbot/fetch_address_of_exam_center/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"bitsbot",
+						"fetch_address_of_exam_center",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_branches_in_campus",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "course",
+							"value": "ME",
+							"type": "text"
+						},
+						{
+							"key": "campus",
+							"value": "All",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/bitsbot/fetch_branches_in_campus/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"bitsbot",
+						"fetch_branches_in_campus",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

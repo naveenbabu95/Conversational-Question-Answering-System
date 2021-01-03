@@ -1,0 +1,50 @@
+I have used python 3.7 has python 3.8 is incompatible with RASA
+
+Install Django
+
+sudo apt-get update
+sudo apt-get install python-virtualenv
+pip3 install django
+sudo apt-get install libpq-dev python-dev
+sudo apt-get install postgresql postgresql-contrib
+pip install psycopg2
+
+
+Install RASA
+pip3 install rasa
+pip install rasa[spacy]
+python -m spacy download en_core_web_md
+python -m spacy link en_core_web_md en
+
+
+
+Restore DB ---- instead of naveen use computer username
+sudo -i -u postgres
+psql
+create databse bitsbot;
+create role naveen with password '123456';      ----------------- the loginid and pwd of machine
+grant all PRIVILEGES  on database bitsbot to naveen;
+ALTER ROLE "naveen" WITH LOGIN;
+ALTER DATABASE bitsbot owner to naveen;
+\c bitsbot;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO naveen;
+exit
+
+in new tab:
+psql bitsbot < default-naveen-VirtualBox-2020-07-05-182452.psql    -------------  file present in DB_Backup folder
+
+now change the DB_Variables.json file
+change 	"DB_USER": "naveen", "DB_PASSWORD": "123456" to computer loginid and pwd
+
+
+
+
+activate virtual env
+cd rpserver/
+source venv/bin/activate
+pip install -r requirements.txt ------------------------------//(file attached in mail)
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py runserver
+
+setup complete!!

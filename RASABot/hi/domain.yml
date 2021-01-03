@@ -1,0 +1,120 @@
+intents:
+  - enquire:
+      use_entities: []
+  - chitchat:
+      use_entities: []
+  - inform
+  - affirm
+  - deny
+  - stop
+  - thankyou
+  - greet
+  - bot_challenge
+  - get_location_state
+  - input_choice
+  - inputting_name
+  - restart
+  - change_exam_type
+  - intent_mood_great
+  - get_location_city
+
+entities:
+  - location_state
+  - exam_type
+  - choice
+  - name_of_user
+  - location_city
+  - list_of_cities
+
+slots:
+  location_state:
+    type: unfeaturized
+  exam_type:
+    type: unfeaturized
+  choice:
+    type: categorical
+    values:
+      - info
+      - center
+  name_of_user:
+    type: unfeaturized
+    initial_value: "आवेदक"
+  location_city:
+    type: unfeaturized
+  list_of_cities:
+    type: unfeaturized
+    initial_value: []
+
+forms:
+- bits_enterance_examcenter_search_in_state
+
+session_config:
+  session_expiration_time: 60  # value in minutes
+  carry_over_slots_to_new_session: false
+
+actions:
+  - action_search_exam_centers
+  - action_get_info_about_exam
+  - action_chat_restart
+  - action_get_addr_exam_center
+
+responses:
+  utter_greet_ask_name:
+  - text: "हैलो। मैं एक बट्स एफएक्यू बॉट हूं। मैं बिट्स पिलानी में प्रवेश परीक्षा के बारे में आपके प्रश्नों को हल करने में आपकी मदद कर सकता हूं।
+            तुम्हारा नाम क्या हे?"
+  - text: "नमस्ते। मेरा नाम बिट्स बॉट है। तुम्हारा नाम क्या हे?"
+
+  utter_help_find_centers:
+  - text: "अपने परीक्षा केंद्रों को खोजने में आपकी मदद करने के लिए, मुझे आपके परीक्षा प्रकार (BITSAT या BITSHD) और आप जिस राज्य से हैं"
+  utter_how_can_i_help:
+  - text: "नमस्ते {name_of_user}, क्या आप प्रवेश परीक्षा के बारे में अधिक जानना चाहते हैं या क्या आप इस राज्य में परीक्षा केंद्र खोजना चाहते हैं"
+  - text: "नमस्ते {name_of_user}, आज मैं आपकी कैसे मदद कर सकता हूं? मैं आपको अपने पास एक परीक्षा केंद्र खोजने में मदद कर सकता हूं
+          या हम आपके द्वारा आयोजित प्रवेश परीक्षा के बारे में अधिक बताते हैं"
+  utter_iamabot:
+    - text: "मैं रासा द्वारा संचालित एक बॉट हूं।"
+  utter_restart:
+    - text: "पुन: प्रारंभ"
+  utter_default:
+    - text: "क्षमा करें, मैं आपको समझ नहीं पाया, कृपया कुछ और इनपुट करें"
+  utter_ask_location_state:
+  - text: "क्या आप अपना स्थान प्रदान कर सकते हैं? कृपया वह राज्य दर्ज करें जिसमें आप हैं"
+  - text: "निकटतम {exam_type} केंद्र को खोजने के लिए मुझे उस राज्य की आवश्यकता है जहां से आप हैं।"
+  utter_ask_exam_type:
+  - text:  "आप किस परीक्षा में BITSAT या BITSHD ले रहे हैं?"
+  utter_submit:
+    - text: "सब कुछ कर दिया!"
+  utter_noworries:
+    - text: "{name_of_user}, आपसे बात करना अच्छा था, आशा है कि मैं कुछ मदद कर सकता हूं।"
+  utter_chitchat:
+    - text: "बात चीत"
+  utter_ask_continue:
+    - text: "{name_of_user} क्या आप जारी रखना चाहते हैं?"
+  utter_slots_values:
+    - text: "मैं {location_state} में {exam_type} के लिए एक केंद्र खोजने जा रहा हूं"
+
+  utter_get_exam_type:
+    - text: "कृपया वह परीक्षा निर्दिष्ट करें जो आप दे रहे हैं"
+  utter_look_for_centers:
+    - text: "हम आपके राज्य में परीक्षा केंद्रों की तलाश करेंगे।"
+  utter_ask_need_exam_center:
+    - text: "क्या आप अपने पास एक परीक्षा केंद्र खोजना चाहते हैं?"
+    - text: "क्या आप एक परीक्षा केंद्र की तलाश कर रहे हैं?"
+  utter_ask_get_info_abt_exam:
+    - text: "क्या आप {exam_type} परीक्षा के बारे में अधिक जानना चाहते हैं?"
+    - text: "आप परीक्षा के बारे में अधिक जानना चाहते हैं?"
+
+  utter_sure:
+     - text: "ज़रूर। वह में स्वयं कर लूँगा"
+  utter_wrong_location_state:
+    - text: "{location_state} भारत का एक राज्य नहीं है। कृपया एक मान्य स्थिति दर्ज करें"
+  utter_can_help_you_find_examcenter_in_city:
+    - text: "मैं आपको उपरोक्त शहरों में एक परीक्षा केंद्र खोजने में मदद कर सकता हूं"
+    - text: "क्या आपको इनमें से किसी एक शहर में परीक्षा केंद्र का पता चाहिए"
+  utter_get_city:
+    - text: "कृपया उस शहर में प्रवेश करें जहाँ आप एक परीक्षा केंद्र खोजना चाहते हैं"
+  utter_wrong_location_city:
+    - text: "क्षमा करें, हम इस शहर में {exam_type} परीक्षा आयोजित नहीं करते हैं"
+  utter_could_not_find_exam_center:
+    - text: "हमें परीक्षा केंद्र नहीं मिला, कृपया बाद में प्रयास करें"
+  utter_found_exam_center:
+    - text: "हमने केंद्रों में पाया"

@@ -1,0 +1,9 @@
+{
+	"DB_HOST": "localhost",
+	"DB_NAME": "bitsbot",
+	"DB_USER": "bitsbot",
+	"DB_PASSWORD": "bitsbot",
+	"DB_PORT": 5432,
+	"DB_BACKUP_PATH": "/home/naveen/RP"
+}
+

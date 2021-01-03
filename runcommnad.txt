@@ -1,0 +1,38 @@
+RASA:
+cd RASABot
+rasa run actions
+
+
+--ENGLISH
+rasa train --data en/data/ -c en/config.yml -d en/domain.yml --out en/model/
+rasa shell --debug -m en/model/
+
+
+--HINDI
+rasa train --data hi/data/ -c hi/config.yml -d hi/domain.yml --out hi/model/
+rasa shell --debug -m hi/model/
+
+TENSORBOARD:
+tensorboard --logdir tensorboard/
+
+
+Django:
+cd rpserver
+source venv/bin/activate
+python3 manage.py runserver
+
+
+SQL commands:
+sudo -i -u postgres
+psql
+\c bitsbot;
+select * from bitsbot_BitsEnteranceExamInformation;
+select * from bitsbot_BitsEnteranceExamCenters;
+select * from bitsbot_BitsCourseInformation;
+select * from bitsbot_BitsExamSyllabus;
+select * from bitsbot_BitsExamFee;
+select * from bitsbot_BitsCourseFee
+
+Misc:
+sudo ss -lptn 'sport = :5055'
+sudo kill processid

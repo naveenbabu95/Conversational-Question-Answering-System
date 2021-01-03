@@ -1,0 +1,8 @@
+RASABot/en/model/
+RASABot/hi/model/
+RASABot/__pycache__/
+rpserver/venv/
+rpserver/rpserver/__pycache__/
+rpserver/bitsbot/__pycache__/
+RASABot/tensorboard/
+rpserver/bitsbot/migrations/
